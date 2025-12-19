@@ -13,6 +13,42 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+    
+    - name: Check All Required Files
+      run: |
+        echo "Checking for required submission files..."
+        missing_files=""
+        
+        if [ ! -f task1_results.txt ]; then
+          missing_files="${missing_files}task1_results.txt "
+        fi
+        if [ ! -f task2_results.txt ]; then
+          missing_files="${missing_files}task2_results.txt "
+        fi
+        if [ ! -f task3_results.txt ]; then
+          missing_files="${missing_files}task3_results.txt "
+        fi
+        if [ ! -f task4_results.txt ]; then
+          missing_files="${missing_files}task4_results.txt "
+        fi
+        
+        if [ -n "$missing_files" ]; then
+          echo "❌ SUBMISSION INCOMPLETE!"
+          echo "Missing required files: $missing_files"
+          echo ""
+          echo "Please create all four task result files:"
+          echo "  - task1_results.txt"
+          echo "  - task2_results.txt"
+          echo "  - task3_results.txt"
+          echo "  - task4_results.txt"
+          echo ""
+          echo "Refer to README.md for instructions."
+          echo "Resubmit after creating all required files."
+          exit 1
+        fi
+        
+        echo "✅ All required files present. Proceeding with grading..."
+    
     - name: Task 1 File Exists
       id: task-1-file-exists
       uses: classroom-resources/autograding-command-grader@v1
