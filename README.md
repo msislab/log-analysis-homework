@@ -320,19 +320,6 @@ Found 42 lines containing "error" in any case variation.
 
 ---
 
-## Grading Rubric
-
-| Category | Points | Criteria |
-|----------|--------|----------|
-| Task 1 (grep) | 5 | Correct usage of all grep flags |
-| Task 2 (tail/head) | 3 | Accurate output and timestamp analysis |
-| Task 3 (awk) | 5 | Proper pattern matching and field extraction |
-| Task 4 (combined) | 7 | Successful command piping and analysis |
-| **Total** | **20** | |
-
-**Bonus:** +2 points for completing the bonus challenge
-
----
 
 ## Tips and Best Practices
 
@@ -422,5 +409,3 @@ graph TB
 ---
 
 **Repository:** Submit via GitHub Classroom  
-**Deadline:** As announced by instructor  
-**Contact:** Reach out during lab hours for assistance
