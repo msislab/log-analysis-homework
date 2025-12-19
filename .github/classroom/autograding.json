@@ -1,0 +1,84 @@
+{
+  "tests": [
+    {
+      "name": "Task 1 File Exists",
+      "setup": "",
+      "run": "test -f task1_results.txt",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 2
+    },
+    {
+      "name": "Task 2 File Exists",
+      "setup": "",
+      "run": "test -f task2_results.txt",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 2
+    },
+    {
+      "name": "Task 3 File Exists",
+      "setup": "",
+      "run": "test -f task3_results.txt",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 2
+    },
+    {
+      "name": "Task 4 File Exists",
+      "setup": "",
+      "run": "test -f task4_results.txt",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 2
+    },
+    {
+      "name": "Task 1 Has Content",
+      "setup": "",
+      "run": "test $(wc -l < task1_results.txt) -gt 10",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "Task 2 Has Content",
+      "setup": "",
+      "run": "test $(wc -l < task2_results.txt) -gt 5",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "Task 3 Has Content",
+      "setup": "",
+      "run": "test $(wc -l < task3_results.txt) -gt 10",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "Task 4 Has Content",
+      "setup": "",
+      "run": "test $(wc -l < task4_results.txt) -gt 10",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    }
+  ]
+}

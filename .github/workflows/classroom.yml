@@ -1,0 +1,100 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Task 1 File Exists
+      id: task-1-file-exists
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Task 1 File Exists
+        setup-command: ''
+        command: test -f task1_results.txt
+        timeout: 1
+        max-score: 2
+    - name: Task 2 File Exists
+      id: task-2-file-exists
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Task 2 File Exists
+        setup-command: ''
+        command: test -f task2_results.txt
+        timeout: 1
+        max-score: 2
+    - name: Task 3 File Exists
+      id: task-3-file-exists
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Task 3 File Exists
+        setup-command: ''
+        command: test -f task3_results.txt
+        timeout: 1
+        max-score: 2
+    - name: Task 4 File Exists
+      id: task-4-file-exists
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Task 4 File Exists
+        setup-command: ''
+        command: test -f task4_results.txt
+        timeout: 1
+        max-score: 2
+    - name: Task 1 Has Content
+      id: task-1-has-content
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Task 1 Has Content
+        setup-command: ''
+        command: test $(wc -l < task1_results.txt) -gt 10
+        timeout: 1
+        max-score: 1
+    - name: Task 2 Has Content
+      id: task-2-has-content
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Task 2 Has Content
+        setup-command: ''
+        command: test $(wc -l < task2_results.txt) -gt 5
+        timeout: 1
+        max-score: 1
+    - name: Task 3 Has Content
+      id: task-3-has-content
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Task 3 Has Content
+        setup-command: ''
+        command: test $(wc -l < task3_results.txt) -gt 10
+        timeout: 1
+        max-score: 1
+    - name: Task 4 Has Content
+      id: task-4-has-content
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Task 4 Has Content
+        setup-command: ''
+        command: test $(wc -l < task4_results.txt) -gt 10
+        timeout: 1
+        max-score: 1
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TASK-1-FILE-EXISTS_RESULTS: "${{steps.task-1-file-exists.outputs.result}}"
+        TASK-2-FILE-EXISTS_RESULTS: "${{steps.task-2-file-exists.outputs.result}}"
+        TASK-3-FILE-EXISTS_RESULTS: "${{steps.task-3-file-exists.outputs.result}}"
+        TASK-4-FILE-EXISTS_RESULTS: "${{steps.task-4-file-exists.outputs.result}}"
+        TASK-1-HAS-CONTENT_RESULTS: "${{steps.task-1-has-content.outputs.result}}"
+        TASK-2-HAS-CONTENT_RESULTS: "${{steps.task-2-has-content.outputs.result}}"
+        TASK-3-HAS-CONTENT_RESULTS: "${{steps.task-3-has-content.outputs.result}}"
+        TASK-4-HAS-CONTENT_RESULTS: "${{steps.task-4-has-content.outputs.result}}"
+      with:
+        runners: task-1-file-exists,task-2-file-exists,task-3-file-exists,task-4-file-exists,task-1-has-content,task-2-has-content,task-3-has-content,task-4-has-content
